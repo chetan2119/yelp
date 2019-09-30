@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import Utility.JSONUtil;
 import Utility.SQLServerConnect;
@@ -16,6 +17,7 @@ import Utility.SQLServerConnect;
  * @author CJ
  *
  */
+@Component
 public class AccessCategory  implements AccessData{
 	
 	@Autowired

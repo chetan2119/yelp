@@ -8,7 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author CJ
  *
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages={
+"controllers", "dbModel", "Utility"})
 public class YelpMain {
 
 	public static void main(String[] args) {

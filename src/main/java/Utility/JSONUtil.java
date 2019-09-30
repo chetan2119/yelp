@@ -1,8 +1,11 @@
 package Utility;
 
+import org.springframework.stereotype.Component;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Component
 public class JSONUtil {
 
 	public String objToString(Object in) {

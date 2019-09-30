@@ -8,11 +8,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import dbModel.AccessBusinessCategories;
 
-
 @RestController
 public class LocationController {
 
-	
 	@Autowired
 	AccessBusinessCategories busCat;
 	

@@ -7,11 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import Utility.JSONUtil;
 import Utility.SQLServerConnect;
 
-
+@Service
 public class AccessBusinessCategories implements AccessData{
 
 	@Autowired
