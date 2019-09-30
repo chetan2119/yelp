@@ -1,6 +1,11 @@
 package dbModel;
 
-public abstract class AccessData {
+/**
+ * 
+ * @author CJ
+ *
+ */
+public interface AccessData {
 	
-	public abstract void getData();
+	public String getData();
 }
