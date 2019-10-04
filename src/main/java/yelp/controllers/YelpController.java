@@ -58,7 +58,7 @@ public class YelpController {
 	private String getCategory() throws SQLException {
 		List<String> list = new ArrayList<String>();
 		Connection con = gc.getCon();
-		String sql = "select distinct category from Business";
+		String sql = "select distinct category from yelp_business";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ResultSet rs = ps.executeQuery();
@@ -74,7 +74,7 @@ public class YelpController {
 	private String getCity() throws SQLException {
 		List<String> list = new ArrayList<String>();
 		Connection con = gc.getCon();
-		String sql = "select distinct category from Business";
+		String sql = "select distinct city from yelp_location";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ResultSet rs = ps.executeQuery();
@@ -90,7 +90,7 @@ public class YelpController {
 	private String getState() throws SQLException {
 		List<String> list = new ArrayList<String>();
 		Connection con = gc.getCon();
-		String sql = "select distinct category from Business";
+		String sql = "select distinct state from yelp_location";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ResultSet rs = ps.executeQuery();
