@@ -1,50 +1,21 @@
-package models;
+package yelp.models;
 
 import java.sql.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 /**
  * 
  * @author CJ
  *
  */
-@Entity
 public class Yelp_review {
-	@Id
-	private String reviewId;
-	private String userId;
-	private String businessId;
+	private String review_id;
+	private String user_id;
+	private String business_id;
 	private String stars;
 	private Date date;
 	private int useful;
 	private int funny;
 	private int cool;
-	
-	public String getReviewId() {
-		return reviewId;
-	}
-	
-	public void setReviewId(String reviewId) {
-		this.reviewId = reviewId;
-	}
-	
-	public String getUserId() {
-		return userId;
-	}
-	
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	
-	public String getBusinessId() {
-		return businessId;
-	}
-	
-	public void setBusinessId(String businessId) {
-		this.businessId = businessId;
-	}
 	
 	public String getStars() {
 		return stars;
@@ -84,6 +55,30 @@ public class Yelp_review {
 	
 	public void setCool(int cool) {
 		this.cool = cool;
+	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
+	public String getBusiness_id() {
+		return business_id;
+	}
+
+	public void setBusiness_id(String business_id) {
+		this.business_id = business_id;
+	}
+
+	public String getReview_id() {
+		return review_id;
+	}
+
+	public void setReview_id(String review_id) {
+		this.review_id = review_id;
 	}
 	
 	

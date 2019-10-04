@@ -1,3 +1,22 @@
+var initialize= function(){
+	$("#mainDiv").display="block";
+	$.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "staticData",
+        data: JSON.stringify(""),
+        dataType: 'json',
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+          //setup static data
+        },
+        error: function (e) {
+        	console.log(e);
+        }
+    });
+}
+
 var getData1= function(){
  $.ajax({
         type: "POST",

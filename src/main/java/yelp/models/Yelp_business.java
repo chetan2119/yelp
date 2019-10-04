@@ -1,23 +1,18 @@
-package models;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
+package yelp.models;
 
 /**
  * 
  * @author CJ
  *
  */
-@Entity
-public class Yelp_business {
+public class Yelp_business { 
 
-	@Id
 	private String business_id;
 	private String name;
 	private String neighborhood;
 	private int stars;
-	private int reviewCounts;
-	private boolean isOpen;
+	private int reviewCount;
+	private boolean is_open;
 	private String category;
 	
 	public String getbusiness_id() {
@@ -52,27 +47,28 @@ public class Yelp_business {
 		this.stars = stars;
 	}
 	
-	public int getReviewCounts() {
-		return reviewCounts;
-	}
-	
-	public void setReviewCounts(int reviewCounts) {
-		this.reviewCounts = reviewCounts;
-	}
-	public boolean isOpen() {
-		return isOpen;
-	}
-	
-	public void setOpen(boolean isOpen) {
-		this.isOpen = isOpen;
-	}
-	
 	public String getCategory() {
 		return category;
 	}
 	
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public int getReviewCount() {
+		return reviewCount;
+	}
+
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
+
+	public boolean isIs_open() {
+		return is_open;
+	}
+
+	public void setIs_open(boolean is_open) {
+		this.is_open = is_open;
 	}
 	
 }

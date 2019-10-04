@@ -1,4 +1,4 @@
-package Utility;
+package yelp.utility;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,10 +9,8 @@ import java.sql.DriverManager;
  * @author CJ
  *
  */
-public class SQLServerConnect implements DBConnect{
-	//@Value("${mssql.ds.host}")
-	private static String msHost = "jdbc:sqlserver://CJ-PC\\SQLEXPRESS;databaseName=yelp;integratedSecurity=true";//1433
-	
+public class SQLServerConnect{
+	private static String msHost = "jdbc:sqlserver://CJ-PC\\SQLEXPRESS;databaseName=yelp;integratedSecurity=true";
 	private static String driverClass = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
 	public Connection getConnection() {
