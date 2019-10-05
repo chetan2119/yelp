@@ -1,6 +1,7 @@
 package yelp.utility;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,13 @@ public class GaleraConnect{
 	public GaleraConnect(){
 		try{
 			Class.forName(driverClass);  
-			/**
-			 * removed code for security reasons	
-			 */
+			String user = "XXX";
+			String pass = "XXX";
+			String url = "xxx";//Added only primary for testing, works well with other nodes
+			
+			System.setProperty("javax.net.ssl.keyStore","xx"); 
+			setCon(DriverManager.getConnection(url,user,pass));
+			
 		}catch(Exception e){
 			System.out.println(e);
 		}

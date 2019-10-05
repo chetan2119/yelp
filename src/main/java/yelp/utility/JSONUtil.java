@@ -6,7 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * 
+ * Class to assist on conversion of Objects into JSON string
  * @author CJ
  *
  */

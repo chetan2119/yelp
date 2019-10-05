@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * 
  * @author CJ
+ * This class initiates the Spring boot application
  *
  */
 @SpringBootApplication
