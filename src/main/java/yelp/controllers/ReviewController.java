@@ -42,9 +42,13 @@ public class ReviewController {
 		int year = Integer.parseInt(actualObj.get("year").toString().replace("\"", ""));
 		
 		Connection con = gc.getCon();
-		String sql ="select user_id, count(*) as cnt from yelp_location bus RIGHT Join yelp_review rev " + 
-					"on bus.business_id = rev.business_id where rev.year=? and bus.state=? "
-					+ "group by rev.user_id order by cnt desc limit 10";
+		//String sql ="select user_id, count(*) as cnt from yelp_location bus RIGHT Join yelp_reviews rev " + 
+			//		"on bus.business_id = rev.business_id where rev.year=? and bus.state=? "
+			//		+ "group by rev.user_id order by cnt desc limit 10";
+		String sql ="select user_id, count(review_id) as cnt from yelp_reviews where year=? and business_id "
+				+ "in(select business_id from yelp_location where state=?) group by user_id having count(review_id)>10 limit 10";
+				
+		System.out.println("Running: "+sql);
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, year);

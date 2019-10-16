@@ -35,7 +35,8 @@ public class BusCategoryController {
 		HashMap<String,String> map = new HashMap<String, String>();
 		Connection con = gc.getCon();
 		String sql = "select count(*) AS count, category from yelp_business a, yelp_location b where "
-					 + "a.business_id=b.business_id and city=? group by category order by category";
+					 + "a.business_id=b.business_id and city=? group by category order by count desc, category asc";
+		System.out.println("Running: "+sql);
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, city.replace("\"", ""));
