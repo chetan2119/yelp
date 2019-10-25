@@ -4,12 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.springframework.stereotype.Component;
+
 
 /**
  * This class was generated for local testing purposes until the cluster was ready, to work with local sql server
  * @author CJ
  *
  */
+@Component
 public class SQLServerConnect{
 	private static String msHost = "jdbc:sqlserver://CJ-PC\\SQLEXPRESS;databaseName=yelp;integratedSecurity=true";
 	private static String driverClass = "com.microsoft.sqlserver.jdbc.SQLServerDriver";

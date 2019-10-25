@@ -25,10 +25,10 @@ public class GaleraConnect{
 			Class.forName(driverClass);  
 			String user = "XXX";
 			String pass = "XXX";
-			String url = "xxx";//Added only primary for testing, works well with other nodes
+			String url = "jdbc:mariadb:failover://IP1,IP2,IP3/<dbname>?autoReconnect=true";
 			
-			System.setProperty("javax.net.ssl.keyStore","xx"); 
-			setCon(DriverManager.getConnection(url,user,pass));
+			System.setProperty("javax.net.ssl.keyStore","xxx.xxx"); 
+		//	setCon(DriverManager.getConnection(url,user,pass)); // this is commented to avoid app from connecting to Galera, the EC2 instance for IPs mentioned above is terminated
 			
 		}catch(Exception e){
 			System.out.println(e);

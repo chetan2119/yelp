@@ -1,8 +1,5 @@
 package yelp.controllers;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import yelp.utility.GaleraConnect;
+import yelp.data.NoSQLData;
+//import yelp.data.SQLData;
 import yelp.utility.JSONUtil;
 
 
@@ -24,10 +22,17 @@ import yelp.utility.JSONUtil;
 @RestController
 public class YelpController {
 	@Autowired
-	GaleraConnect gc; //Connection object for Galera Cluster
+	JSONUtil json; //Object to assist with JSON operations
+	
+	/*
+	 * Commenting as using NoSQL
+	 * 
+		@Autowired
+		SQLData sql; //Object to get SQL Data from Galera
+	 */
 	
 	@Autowired
-	JSONUtil json; //Object to assist with JSON operations
+	NoSQLData noSql; //Object to get Data from MongoDB
 	
 	/**
 	 * Returns static data for city, state, category and year
@@ -36,9 +41,14 @@ public class YelpController {
 	 */
 	@RequestMapping("/staticData")
 	public String returnData(){
-		String category = getCategory();
-		String city = getCity();
-		String state = getState();
+		/*
+		String category = sql.getCategory();
+		String city = sql.getCity();
+		String state = sql.getState();
+		*/
+		String category = noSql.getCategory();
+		String city = noSql.getCity();
+		String state = noSql.getState();
 		String year = getYear();
 		HashMap<String,String> map = new HashMap<String, String>();
 		map.put("category", category);
@@ -54,7 +64,7 @@ public class YelpController {
 	/**
 	 * years vary from 2004 to 2017 as per data, setting them in a list
 	 */
-	private String getYear() {
+	public String getYear() {
 		List<Integer> year = new ArrayList<Integer>();
 		for(int i = 2004; i< 2018; i++) {
 			year.add(i);
@@ -62,75 +72,5 @@ public class YelpController {
 		String out = json.objToString(year);
 		return out;
 	}
-
-	/**
-	 * getting the categories values from DB
-	 * @return
-	 */
-	private String getCategory() {
-		List<String> list = new ArrayList<String>();
-		Connection con = gc.getCon();
-		String sql = "select distinct category from yelp_business";
-		
-		
-		try{
-			PreparedStatement ps = con.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			 
-			while(rs.next()) {
-				list.add(rs.getString("category"));
-			}
-		}catch(SQLException e) {
-			System.out.println("Exception:"+e);
-		}
-		String out = json.objToString(list);
-		return out;
-		
-	}
 	
-	/**
-	 * getting the city values from DB
-	 * @return
-	 */
-	private String getCity() {
-		List<String> list = new ArrayList<String>();
-		Connection con = gc.getCon();
-		String sql = "select distinct city from yelp_location";
-		try {
-			PreparedStatement ps = con.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			 
-			while(rs.next()) {
-				list.add(rs.getString("city"));
-			}
-		}catch(SQLException e) {
-			System.out.println("Exception:"+e);
-		}
-		String out = json.objToString(list);
-		return out;
-		
-	}
-	
-	/**
-	 * getting the state values from DB
-	 * @return
-	 */
-	private String getState() {
-		List<String> list = new ArrayList<String>();
-		Connection con = gc.getCon();
-		String sql = "select distinct state from yelp_location";
-		try {
-			PreparedStatement ps = con.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			 
-			while(rs.next()) {
-				list.add(rs.getString("state"));
-			}
-		}catch(SQLException e) {
-			System.out.println("Exception:"+e);
-		}
-		String out = json.objToString(list);
-		return out;
-		
-	}
 }
