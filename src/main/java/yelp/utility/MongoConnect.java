@@ -1,28 +1,26 @@
 package yelp.utility;
 
-
-import org.bson.Document;
 import org.springframework.stereotype.Component;
 
+import com.mongodb.DB;
 import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 
 @Component
 public class MongoConnect {
 	
-	MongoDatabase database=null;
+	DB database=null;
 	
 	static MongoClient mongoClient = null;
+	@SuppressWarnings("deprecation")
 	public void getNewDatabase() {
 		try{
 			mongoClient = new MongoClient("localhost");
-			database = mongoClient.getDatabase("yelp");
+			database = mongoClient.getDB("yelp");
 		}catch(Exception e){
 			System.out.println("Exception"+ e);
 		}
 	}
-	public MongoDatabase getDatabase() {
+	public DB getDatabase() {
 		if(database==null) {
 			getNewDatabase(); 
 		}
